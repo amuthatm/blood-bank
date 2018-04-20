@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Untitled 1</title>
+</head>
+
+<body background="blood-donation-3.jpg">
+
+
+<?php
+$name=$_POST["txtname"];
+$address=$_POST["txtaddress"];
+$age=$_POST["txtage"];
+$bloodgroup=$_POST["Bgroup"];
+$district=$_POST["district"];
+$weight=$_POST["txtweight"];
+$contactno=$_POST["txtcontact"];
+$gender=$_POST["gen"];
+$con=mysqli_connect("localhost","root","","bloodbank");
+//mysqli_slect_db("bloodbank",$con);
+$query="insert into donor_details(name,address,age,bloodgroup,district,weight,contactno,gender) values('$name','$address','$age','$bloodgroup','$district','$weight','$contactno','$gender')";
+mysqli_query($con,$query);
+if($query)
+{
+   echo "<script type='text/javascript'>alert('Registration success'); </script>";
+}
+else
+{
+
+ echo 'Registration unsuccessful';
+
+}
+mysqli_close($con);
+?>
+
+<div style="height: 66px; width: 948px;" class="auto-style3">
+<button style="height:58px; width:229.25px" onclick="window.location='default.html';" style="border:thin maroon dashed" style="background-color:maroon" style="font:menu" class="auto-style4" >
+<h3>HOME</h3>
+	</button>
+	
+	<button  class="myButton" style="height:58px; width:229.25px" onclick="window.location='register.html';" style="border:thin maroon dashed" style="background-color:maroon" style="font:menu" class="auto-style4" >
+<h3>REGISTER</h3>
+	</button>
+<button style="height:58px; width:229.25px" onclick="window.location='about us.html';" style="border:thin maroon dashed" style="background-color:maroon" style="font:menu" class="auto-style4" >
+<h3>ABOUT US</h3>
+	</button>
+<button style="height:58px; width:229.25px" onclick="window.location='view.html';" style="border:thin maroon dashed" style="background-color:maroon" style="font:menu" class="auto-style4" >
+<h3>VIEW DONOR</h3>
+	</button>
+
+</div>
+
+
+</body>
+
+</html>

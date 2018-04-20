@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Untitled 1</title>
+</head>
+
+<body background="blood-donation-3.jpg">
+<?php
+$con = mysqli_connect("localhost","root","","bloodbank");
+//mysqli_select_db('bloodbank',$con);
+
+
+?>
+
+<form action="viewdonor.php" action="get">
+
+  <tr> <td><label>District:</label></td>
+       <td><select name="district" id="district">
+        <option value="Thiruvananthapuram">Thiruvananthapuram</option>  
+        <option value="Kollam"> Kollam</option> 
+        <option value="Palakkad"> Palakkad</option>                         
+        <option value="Ernakulam"> Ernakulam</option> 
+        <option value="Kottayam"> Kottayam</option>  
+           </select> </td>
+    </tr> 
+  <tr> <td><label>Blood group:</label></td>
+       <td><select name="Bgroup" id="Bgroup">
+        <option value="B+"> B+</option>  
+        <option value="B-"> B-</option> 
+        <option value="O+"> O+</option> 
+        <option value="O-"> O-</option>  
+        <option value="A+"> A+</option>        
+        <option value="AB+">AB+</option>
+        <option value="AB-"> AB-</option> 
+        </select> </td>
+   </tr> 
+    <tr>
+        <input type="submit" value="Submit" />
+    </tr>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+</form>
+<?php
+
+if (isset($_GET['district']))
+$district = $_GET['district'];
+
+if (isset($_GET['district'])){
+$res=mysqli_query($con,"select * from donor_details where district='$district'");
+while($row=mysqli_fetch_assoc($res))
+{  $name=$row['name'];
+   $address=$row['address'];
+   $age=$row['age'];
+   $bloodgroup=$row['bloodgroup'];
+   $district=$row['district'];
+   $weight=$row['weight'];
+   $contactno=$row['contactno'];
+   $gender=$row['gender'];
+ 
+    echo $name." ".$contactno." ";
+   }
+mysqli_close($con);
+}
+      ?>
+      
+      <div style="height: 66px; width: 948px;" class="auto-style3">
+<button style="height:58px; width:229.25px" onclick="window.location='default.html';" style="border:thin maroon dashed" style="background-color:maroon" style="font:menu" class="auto-style4" >
+<h3>HOME</h3>
+	</button>
+	
+	<button  class="myButton" style="height:58px; width:229.25px" onclick="window.location='register.html';" style="border:thin maroon dashed" style="background-color:maroon" style="font:menu" class="auto-style4" >
+<h3>REGISTER</h3>
+	</button>
+<button style="height:58px; width:229.25px" onclick="window.location='about us.html';" style="border:thin maroon dashed" style="background-color:maroon" style="font:menu" class="auto-style4" >
+<h3>ABOUT US</h3>
+	</button>
+<button style="height:58px; width:229.25px" onclick="window.location='view.html';" style="border:thin maroon dashed" style="background-color:maroon" style="font:menu" class="auto-style4" >
+<h3>VIEW DONOR</h3>
+	</button>
+
+</div>
+
+
+</body>
+
+</html>
